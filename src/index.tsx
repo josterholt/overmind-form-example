@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createHook, Provider } from "overmind-react";
-
 import { createOvermind } from 'overmind';
+import Homepage from './pages/homepage';
 
-const initial_state = {
-    title: 'My App'
+const config = {
+    state: {
+        "title": "My App"
+    }
 };
 
-const overmind = createOvermind(initial_state);
+const overmind = createOvermind(config, {
+    devtools: true
+});
 
-const  MyApp = function () {
-    return <div>Testing</div>;
-}
-ReactDOM.render(<Provider value={overmind}><MyApp /></Provider>, document.getElementById('app'));
+ReactDOM.render(<Provider value={overmind}><Homepage /></Provider>, document.getElementById('app'));
