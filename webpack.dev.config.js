@@ -5,8 +5,7 @@ const path = require('path');
   module.exports = {
     mode: 'development',
     entry: {
-      app: './src/index.js',
-      //print: './src/print.js'
+      app: './src/index.tsx',
     },
     devtool: 'inline-source-map',
     plugins: [
@@ -20,13 +19,21 @@ const path = require('path');
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js|jsx|tsx)$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader"
           }
+        },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: /node_modules/
         }
       ]
+    },
+    resolve: {
+      extensions: ['.tsx', 'ts', '.js']
     },
     output: {
       filename: '[name].bundle.js',
