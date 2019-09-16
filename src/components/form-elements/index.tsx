@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useOnChangeFnHook, useOnChangeParentFnHook } from './form-hooks';
+import { useOnChangeFnHook, useOnSubmitFnHook } from './form-hooks';
 
 /**
  * All field elements will have the following state structure:
@@ -86,16 +86,19 @@ enum SUBMIT_BUTTON_STATES {
 
 const SubmitButton = function (props:any) {
     const [buttonState, setButtonState] = useState(SUBMIT_BUTTON_STATES.SUBMIT);
-    
+    const onSubmitFn = useOnSubmitFnHook(props);
+
     const _onClickHandler = function () {
         // tell parent this is processing something long -- mabe?
 
         // change button state to processing
         setButtonState(SUBMIT_BUTTON_STATES.PROCESSING);
 
+        console.log("Calling on submit parent");
+
         // run props.onClickHandler
-        if(props.onClickHandler) {
-            props.onClickHandler();
+        if(onSubmitFn) {
+            onSubmitFn();
         }
     }
     

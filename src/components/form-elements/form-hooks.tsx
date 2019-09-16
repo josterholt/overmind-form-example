@@ -32,14 +32,18 @@ function useOnChangeParentFnHook(props:any) {
     if('eventHandlers' in props && 'onChange' in props.eventHandlers) {
         onChangeFn = props.eventHandlers.onChange;
     }
-    
-    const [onChange, setOnChange] = useState(() => onChangeFn);
 
-    return onChange;
+    return onChangeFn;
 }
 
-function submitForm(props:any) {
-    
+function useOnSubmitFnHook(props:any) {
+    let onSubmitFn:any = null;
+
+    if('eventHandlers' in props && 'onSubmit' in props.eventHandlers) {
+        onSubmitFn = props.eventHandlers.onSubmit;
+    }
+
+    return onSubmitFn;
 }
 
-export {useOnChangeParentFnHook, useOnChangeFnHook};
+export {useOnChangeParentFnHook, useOnChangeFnHook, useOnSubmitFnHook};
