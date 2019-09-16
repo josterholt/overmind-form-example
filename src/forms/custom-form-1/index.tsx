@@ -16,7 +16,7 @@ const form = function () {
     };
 
     const onSubmitParentHandler = () => {
-        //const [formValues, setFormValues] = useState<IFormValues | undefined>({});
+        const [formValues, setFormValues] = useState<IFormValues | undefined>({});
         console.log(formValues);
     }
 
