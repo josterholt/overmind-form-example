@@ -98,7 +98,7 @@ const SubmitButton = function (props:any) {
         // change button state to processing
         setButtonState(SUBMIT_BUTTON_STATES.PROCESSING);
 
-        console.log("Calling on submit parent");
+        console.log("form-elements::_onClickHandler");
 
         // run props.onClickHandler
         if(onSubmitFn) {

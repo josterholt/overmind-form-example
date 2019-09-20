@@ -1,9 +1,11 @@
 import { useState, SyntheticEvent } from 'react';
 
+interface IFormValues {
+    [fieldName: string]: any
+};
+
 function useOnChangeFnHook(props:any) {
     const [value, setValue] = useState();
-
-    const onChangeParentFn = useOnChangeParentFnHook(props);
 
     const onChangeFn = function (evt:SyntheticEvent) {
         evt.stopPropagation();
@@ -18,6 +20,7 @@ function useOnChangeFnHook(props:any) {
          * We don't want to send as raw DOM value, as
          * there may have been some processing
          */
+        const onChangeParentFn = useOnChangeParentFnHook(props);        
         if(onChangeParentFn) {
             onChangeParentFn(props.name, value);
         }    
@@ -46,4 +49,14 @@ function useOnSubmitFnHook(props:any) {
     return onSubmitFn;
 }
 
-export {useOnChangeParentFnHook, useOnChangeFnHook, useOnSubmitFnHook};
+function useFormOnSubmitFnHook(props:any) {
+    const [formValues, setFormValues] = useState<IFormValues | undefined>({});
+
+    return () => {
+        console.log("user-profile::onSubmitParentHandler");
+        console.log(props);
+        console.log(formValues);    
+    }
+}
+
+export {useOnChangeParentFnHook, useOnChangeFnHook, useOnSubmitFnHook, useFormOnSubmitFnHook};
