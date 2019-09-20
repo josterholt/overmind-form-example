@@ -1,10 +1,10 @@
 import React from "react";
-import CustomForm1 from '../forms/custom-form-1';
+import UserProfileFormContainer from "../components/form-containers/user-profile-container";
 
 const homepage = function () {
     return <div>
         <h1>Demo React Application</h1>
-        <CustomForm1 />
+        <UserProfileFormContainer />
     </div>
 }
 

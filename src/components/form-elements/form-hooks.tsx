@@ -1,4 +1,4 @@
-import { useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent } from 'react';
 
 function useOnChangeFnHook(props:any) {
     const [value, setValue] = useState();

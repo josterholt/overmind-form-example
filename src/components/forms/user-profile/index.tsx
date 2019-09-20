@@ -1,13 +1,14 @@
 import React, {useState, SyntheticEvent} from 'react';
-import {TextField, NumberField, SubmitButton} from '../../components/form-elements';
+import {TextField, NumberField, SubmitButton} from '../../form-elements';
 import { any } from 'prop-types';
 
 interface IFormValues {
     [fieldName: string]: any
 };
 
-const form = function () {
+const form = function (props:any) {
     const [formValues, setFormValues] = useState<IFormValues | undefined>({});
+
     const onChangeParentHandler = function (fieldName:string, value:any) {
         formValues[fieldName] = value;
         setFormValues(formValues);

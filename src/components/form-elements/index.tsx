@@ -79,6 +79,10 @@ const NumberField = function (props:any) {
     return <InputField  type={'number'} {...props} />;
 }
 
+const PasswordField = function (props:any) {
+    return <InputField type={'password'} {...props} />;
+}
+
 enum SUBMIT_BUTTON_STATES {
     SUBMIT = "SUBMIT",
     PROCESSING = "PROCESSING"
@@ -115,4 +119,4 @@ const SubmitButton = function (props:any) {
     </div>
 }
 
-export { TextField, NumberField, SubmitButton }
+export { TextField, NumberField, PasswordField, SubmitButton }
